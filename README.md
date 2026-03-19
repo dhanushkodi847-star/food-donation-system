@@ -30,7 +30,7 @@ FoodShare is a full-stack web application developed to reduce food wastage by co
 
 1. Clone the repository  
 
-git clone https://github.com/your-username/food-donation-system.git
+git clone https://github.com/dhanushkodi847-star/food-donation-system.git
 
 2. Navigate to project folder  
 
