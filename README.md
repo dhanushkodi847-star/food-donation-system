@@ -69,28 +69,28 @@ cd frontend
 npm install
 npm run dev
 
-🔐 Environment Variables
+##🔐 Environment Variables
 
-Create a .env file in the backend folder:
+##Create a .env file in the backend folder:
 
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_secret_key
 
-📌 Future Improvements
+##📌 Future Improvements
 
 🤖 AI-based food demand prediction
 📍 Location-based donor matching
 📊 Advanced analytics dashboard
 
-🙌 Contribution
+##🙌 Contribution
 Contributions are welcome! Feel free to fork the repo and submit a pull request.
 
-📧 Contact
+##📧 Contact
 
 Dhanush Kodi S
 📧 dhanushkodi847@gmail.com
 📍 Chennai, India
 
-⭐ If you like this project, give it a star!
+##⭐ If you like this project, give it a star!
 
 ---
