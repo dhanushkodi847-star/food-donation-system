@@ -92,23 +92,4 @@ Dhanush Kodi S
 
 ⭐ If you like this project, give it a star!
 
-
 ---
-
-# 🔥 What I improved
-- Clean structure ✨  
-- Proper headings  
-- Setup clear ah split panninen  
-- Screenshots organized 📸  
-- Professional tone added  
-- Badges add panninen 😎  
-
----
-
-## 💥 Next step
-👉 Ithu paste pannitu commit pannu:
-
-```bash
-git add README.md
-git commit -m "updated professional README"
-git push
