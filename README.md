@@ -51,18 +51,19 @@ FoodShare is a full-stack MERN web application designed to reduce food wastage b
 
 ## ⚙️ Installation & Setup
 
- 1️⃣ Clone the repository
+ ###1️⃣ Clone the repository
 ```bash
 git clone https://github.com/dhanushkodi847-star/food-donation-system.git
 cd food-donation-system
 
- 2️⃣ Backend Setup
+```md
+###2️⃣ Backend Setup
 
 cd backend
 npm install
 npm start
 
-3️⃣ Frontend Setup
+###3️⃣ Frontend Setup
 
 cd frontend
 npm install
