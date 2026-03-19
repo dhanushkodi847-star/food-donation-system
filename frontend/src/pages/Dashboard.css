@@ -1,0 +1,135 @@
+/* ========== Dashboard Shared Styles ========== */
+.dashboard {
+  padding: var(--space-xl) 0;
+  min-height: calc(100vh - 70px);
+}
+
+.dashboard-header {
+  margin-bottom: var(--space-xl);
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.dashboard-header h1 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: var(--space-xs);
+}
+
+.dashboard-header p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.dashboard-section {
+  margin-bottom: var(--space-2xl);
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.dashboard-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-lg);
+}
+
+.dashboard-section-header h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.donations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: var(--space-lg);
+}
+
+/* Create Donation Form */
+.create-donation-form {
+  max-width: 700px;
+}
+
+.create-donation-form .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.create-donation-form .form-row-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--space-md);
+}
+
+/* Filter Bar */
+.filter-bar {
+  display: flex;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.filter-bar select {
+  min-width: 160px;
+}
+
+/* Admin Table */
+.admin-users-table {
+  margin-top: var(--space-md);
+}
+
+/* Toggle Sections */
+.section-toggle {
+  display: flex;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.section-toggle-btn {
+  padding: 10px 20px;
+  border-radius: var(--radius-md);
+  background: var(--bg-glass);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.section-toggle-btn.active {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: var(--primary-500);
+  color: var(--primary-400);
+}
+
+.section-toggle-btn:hover {
+  border-color: var(--primary-500);
+  color: var(--primary-400);
+}
+
+@media (max-width: 768px) {
+  .dashboard-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .donations-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .create-donation-form .form-row,
+  .create-donation-form .form-row-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .section-toggle {
+    flex-wrap: wrap;
+  }
+}
