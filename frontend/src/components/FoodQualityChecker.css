@@ -1,0 +1,238 @@
+/* ========== Food Quality Checker ========== */
+.quality-checker {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+}
+
+.quality-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: var(--space-lg);
+}
+
+.quality-icon {
+  font-size: 2rem;
+}
+
+.quality-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.quality-subtitle {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.quality-dropzone {
+  border: 2px dashed var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl) var(--space-lg);
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.quality-dropzone:hover,
+.quality-dropzone.drag-over {
+  border-color: var(--primary-500);
+  background: rgba(16, 185, 129, 0.05);
+}
+
+.quality-dropzone-icon {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-sm);
+  opacity: 0.6;
+}
+
+.quality-dropzone-text {
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.quality-dropzone-hint {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.quality-preview-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.quality-preview {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.quality-preview img {
+  width: 100%;
+  max-height: 250px;
+  object-fit: cover;
+}
+
+.quality-clear {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  color: white;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.quality-clear:hover {
+  background: rgba(239, 68, 68, 0.8);
+}
+
+.quality-analyze-btn {
+  width: 100%;
+}
+
+.quality-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-right: 8px;
+}
+
+.quality-result {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+  background: var(--bg-glass);
+  border: 1px solid;
+  animation: scaleIn 0.4s ease;
+}
+
+.quality-score-ring {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 90px;
+  min-width: 90px;
+  min-height: 90px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.25);
+  border: 3px solid var(--score-color);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.25);
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.quality-score-value {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--score-color);
+  line-height: 1;
+  width: 100%;
+  text-align: center;
+}
+
+.quality-score-label {
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  margin-top: 2px;
+  width: 100%;
+  text-align: center;
+}
+
+.quality-result {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+  background: var(--bg-glass);
+  border: 1px solid;
+  animation: scaleIn 0.4s ease;
+  flex-wrap: wrap;
+}
+
+.quality-result-info {
+  flex: 1;
+  min-width: 180px;
+}
+
+.quality-score-label {
+  font-size: 0.55rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.quality-result-info {
+  flex: 1;
+}
+
+.quality-result-label {
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.quality-result-confidence {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.quality-result-details {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.quality-error {
+  padding: var(--space-md);
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: var(--radius-md);
+  color: #f87171;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+@media (max-width: 720px) {
+  .quality-result {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .quality-result-info {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .quality-score-ring {
+    margin-bottom: var(--space-sm);
+  }
+}
+

@@ -1,0 +1,366 @@
+/* ========== Delivery Tracker Styles ========== */
+
+.delivery-tracker-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: fadeIn 0.3s ease;
+}
+
+.delivery-tracker-container {
+  width: 95%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl), 0 0 60px rgba(16, 185, 129, 0.1);
+  animation: scaleIn 0.35s ease;
+}
+
+.delivery-tracker-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-lg) var(--space-xl);
+  border-bottom: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.delivery-tracker-header h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.delivery-tracker-close {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  background: var(--bg-glass);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-size: 1.1rem;
+}
+
+.delivery-tracker-close:hover {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: var(--danger-400);
+  color: var(--danger-400);
+}
+
+/* Info Bar */
+.delivery-tracker-info {
+  display: flex;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-xl);
+  border-bottom: 1px solid var(--border-color);
+  flex-wrap: wrap;
+}
+
+.tracker-info-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.tracker-info-chip .chip-icon {
+  font-size: 1rem;
+}
+
+.tracker-info-chip .chip-value {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+/* Map Container */
+.delivery-tracker-map {
+  position: relative;
+  height: 400px;
+  margin: var(--space-md) var(--space-xl);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.delivery-tracker-map .leaflet-container {
+  height: 100%;
+  width: 100%;
+  border-radius: var(--radius-lg);
+}
+
+/* Google Maps Button */
+.google-maps-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #4285f4, #1a73e8);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(66, 133, 244, 0.35);
+}
+
+.google-maps-btn:hover {
+  background: linear-gradient(135deg, #5a9bf6, #4285f4);
+  box-shadow: 0 6px 20px rgba(66, 133, 244, 0.5);
+  transform: translateY(-2px);
+  color: white;
+}
+
+.google-maps-btn svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* Actions bar */
+.delivery-tracker-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md) var(--space-xl);
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.tracking-status-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.tracking-status-pill.active {
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: var(--primary-400);
+}
+
+.tracking-status-pill.inactive {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: var(--danger-400);
+}
+
+/* Pulsing dot for live status */
+.pulse-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--primary-400);
+  animation: pulseScale 1.5s ease-in-out infinite;
+}
+
+.pulse-dot.danger {
+  background: var(--danger-400);
+  animation: none;
+}
+
+@keyframes pulseScale {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.6);
+    opacity: 0.5;
+  }
+}
+
+/* Route Info Panel */
+.route-info-panel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--space-md);
+  padding: 0 var(--space-xl) var(--space-lg);
+}
+
+.route-info-card {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  text-align: center;
+  transition: all var(--transition-fast);
+}
+
+.route-info-card:hover {
+  border-color: var(--primary-500);
+  background: rgba(16, 185, 129, 0.05);
+}
+
+.route-info-card .label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+
+.route-info-card .value {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.route-info-card .unit {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* Live tracking map (receiver/admin) */
+.live-tracking-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: fadeIn 0.3s ease;
+}
+
+.live-tracking-container {
+  width: 95%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl), 0 0 60px rgba(59, 130, 246, 0.1);
+  animation: scaleIn 0.35s ease;
+}
+
+.live-tracking-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-lg) var(--space-xl);
+  border-bottom: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.live-tracking-header h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Donor marker animation on map */
+@keyframes markerPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(59, 130, 246, 0);
+  }
+}
+
+/* Track button on donation card */
+.track-delivery-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+}
+
+.track-delivery-btn:hover {
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+  transform: translateY(-1px);
+}
+
+.track-donor-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.track-donor-btn:hover {
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .delivery-tracker-container,
+  .live-tracking-container {
+    width: 98%;
+    max-height: 95vh;
+    border-radius: var(--radius-lg);
+  }
+
+  .delivery-tracker-map {
+    height: 300px;
+    margin: var(--space-sm) var(--space-md);
+  }
+
+  .delivery-tracker-header,
+  .delivery-tracker-info,
+  .delivery-tracker-actions,
+  .route-info-panel,
+  .live-tracking-header {
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+  }
+
+  .route-info-panel {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
