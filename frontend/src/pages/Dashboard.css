@@ -115,6 +115,7 @@
   color: var(--primary-400);
 }
 
+<<<<<<< HEAD
 /* ========== Predictions Grid ========== */
 .predictions-grid {
   display: grid;
@@ -146,6 +147,8 @@
   box-shadow: var(--shadow-lg) !important;
 }
 
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
 @media (max-width: 768px) {
   .dashboard-header h1 {
     font-size: 1.5rem;
@@ -155,10 +158,13 @@
     grid-template-columns: 1fr;
   }
 
+<<<<<<< HEAD
   .predictions-grid {
     grid-template-columns: 1fr;
   }
 
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
   .create-donation-form .form-row,
   .create-donation-form .form-row-3 {
     grid-template-columns: 1fr;

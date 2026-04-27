@@ -47,7 +47,11 @@ const donationSchema = new mongoose.Schema(
     },
     status: {
       type: String,
+<<<<<<< HEAD
       enum: ['available', 'requested', 'accepted', 'picked_up', 'reached', 'delivered', 'expired'],
+=======
+      enum: ['available', 'requested', 'accepted', 'picked_up', 'delivered'],
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
       default: 'available',
     },
     receiver: {
@@ -55,6 +59,7 @@ const donationSchema = new mongoose.Schema(
       ref: 'User',
       default: null,
     },
+<<<<<<< HEAD
     coordinates: {
       lat: { type: Number, default: null },
       lng: { type: Number, default: null },
@@ -85,6 +90,8 @@ const donationSchema = new mongoose.Schema(
       lat: { type: Number, default: null },
       lng: { type: Number, default: null },
     },
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
   },
   {
     timestamps: true,

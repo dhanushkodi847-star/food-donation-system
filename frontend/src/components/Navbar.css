@@ -8,11 +8,14 @@
   border-bottom: 1px solid var(--border-color);
 }
 
+<<<<<<< HEAD
 [data-theme="light"] .navbar {
   background: #ffffff;
   border-bottom: 1px solid #cccccc;
 }
 
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
 .navbar-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -23,12 +26,15 @@
   height: 70px;
 }
 
+<<<<<<< HEAD
 .navbar-left-group {
   display: flex;
   align-items: center;
   gap: var(--space-md);
 }
 
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
 .navbar-brand {
   display: flex;
   align-items: center;
@@ -139,6 +145,7 @@
     justify-content: center;
   }
 }
+<<<<<<< HEAD
 
 /* ========== Theme Toggle ========== */
 .navbar-theme-toggle {
@@ -187,3 +194,5 @@
   background: #f0f0f0;
   color: var(--primary-500);
 }
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda

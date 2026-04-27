@@ -61,7 +61,11 @@ cd food-donation-system
 
 cd backend
 npm install
+<<<<<<< HEAD
 npm run dev
+=======
+npm start
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
 
 ###3️⃣ Frontend Setup
 

@@ -38,8 +38,13 @@ const deleteUser = async (req, res) => {
 const getAllDonations = async (req, res) => {
   try {
     const donations = await Donation.find({})
+<<<<<<< HEAD
       .populate('donor', 'name email phone address')
       .populate('receiver', 'name email phone organization address')
+=======
+      .populate('donor', 'name email phone')
+      .populate('receiver', 'name email phone organization')
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
       .sort({ createdAt: -1 });
 
     res.json(donations);
@@ -61,7 +66,10 @@ const getDashboardStats = async (req, res) => {
     const requestedDonations = await Donation.countDocuments({ status: 'requested' });
     const acceptedDonations = await Donation.countDocuments({ status: 'accepted' });
     const deliveredDonations = await Donation.countDocuments({ status: 'delivered' });
+<<<<<<< HEAD
     const expiredDonations = await Donation.countDocuments({ status: 'expired' });
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
 
     // Category breakdown
     const categoryStats = await Donation.aggregate([
@@ -84,7 +92,10 @@ const getDashboardStats = async (req, res) => {
       requestedDonations,
       acceptedDonations,
       deliveredDonations,
+<<<<<<< HEAD
       expiredDonations,
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
       categoryStats,
       recentDonations,
     });
@@ -93,6 +104,7 @@ const getDashboardStats = async (req, res) => {
   }
 };
 
+<<<<<<< HEAD
 // @desc    Get advanced analytics data
 // @route   GET /api/admin/analytics
 // @access  Private (Admin only)
@@ -169,3 +181,6 @@ module.exports = {
   getAnalyticsData,
   deleteExpiredDonations
 };
+=======
+module.exports = { getAllUsers, deleteUser, getAllDonations, getDashboardStats };
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda

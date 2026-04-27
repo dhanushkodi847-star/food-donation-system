@@ -17,6 +17,7 @@ const userSchema = new mongoose.Schema(
     },
     password: {
       type: String,
+<<<<<<< HEAD
       required: [
         function() { return !this.googleId; },
         'Password is required'
@@ -34,14 +35,26 @@ const userSchema = new mongoose.Schema(
         function() { return !this.googleId; },
         'Phone number is required'
       ],
+=======
+      required: [true, 'Password is required'],
+      minlength: 6,
+    },
+    phone: {
+      type: String,
+      required: [true, 'Phone number is required'],
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
       trim: true,
     },
     address: {
       type: String,
+<<<<<<< HEAD
       required: [
         function() { return !this.googleId; },
         'Address is required'
       ],
+=======
+      required: [true, 'Address is required'],
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
       trim: true,
     },
     role: {
@@ -54,6 +67,7 @@ const userSchema = new mongoose.Schema(
       trim: true,
       default: '',
     },
+<<<<<<< HEAD
     coordinates: {
       lat: { type: Number, default: null },
       lng: { type: Number, default: null },
@@ -70,6 +84,8 @@ const userSchema = new mongoose.Schema(
       type: Date,
       default: null,
     },
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
   },
   {
     timestamps: true,

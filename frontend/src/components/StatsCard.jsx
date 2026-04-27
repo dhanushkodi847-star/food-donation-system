@@ -7,6 +7,7 @@ const StatsCard = ({ icon, label, value, color = 'primary' }) => {
   const animated = useRef(false);
 
   useEffect(() => {
+<<<<<<< HEAD
     const numValue = parseInt(value) || 0;
     
     // Reset if value is 0
@@ -19,11 +20,26 @@ const StatsCard = ({ icon, label, value, color = 'primary' }) => {
     const duration = 1200;
     const steps = 30;
     const increment = numValue / steps;
+=======
+    if (animated.current) return;
+    const numValue = parseInt(value) || 0;
+    if (numValue === 0) { setDisplayValue(0); return; }
+    
+    animated.current = true;
+    const duration = 1200;
+    const steps = 30;
+    const increment = numValue / steps;
+    let current = 0;
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
     let step = 0;
 
     const timer = setInterval(() => {
       step++;
+<<<<<<< HEAD
       const current = Math.min(Math.round(increment * step), numValue);
+=======
+      current = Math.min(Math.round(increment * step), numValue);
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
       setDisplayValue(current);
       if (step >= steps) clearInterval(timer);
     }, duration / steps);

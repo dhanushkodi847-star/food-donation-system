@@ -17,6 +17,7 @@
     "cors": "^2.8.6",
     "dotenv": "^17.3.1",
     "express": "^5.2.1",
+<<<<<<< HEAD
     "express-rate-limit": "^8.3.1",
     "express-validator": "^7.3.1",
     "google-auth-library": "^10.6.2",
@@ -26,6 +27,11 @@
     "node-cron": "^4.2.1",
     "nodemailer": "^8.0.4",
     "pdfkit": "^0.18.0"
+=======
+    "express-validator": "^7.3.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.3.0"
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
   },
   "devDependencies": {
     "nodemon": "^3.1.14"

@@ -3,23 +3,33 @@ import { useAuth } from '../context/AuthContext';
 import API from '../api/axios';
 import StatsCard from '../components/StatsCard';
 import DonationCard from '../components/DonationCard';
+<<<<<<< HEAD
 import { FiSearch, FiPackage, FiClock, FiCheckCircle, FiShoppingBag, FiMap, FiDownload, FiFileText } from 'react-icons/fi';
 import MapView from '../components/MapView';
 import LiveTrackingMap from '../components/LiveTrackingMap';
 import { toast } from 'react-toastify';
 import './Dashboard.css';
 import { downloadPDF } from '../utils/downloadHelper';
+=======
+import { FiSearch, FiPackage, FiClock, FiCheckCircle, FiShoppingBag } from 'react-icons/fi';
+import { toast } from 'react-toastify';
+import './Dashboard.css';
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
 
 const ReceiverDashboard = () => {
   const { user } = useAuth();
   const [available, setAvailable] = useState([]);
   const [myRequests, setMyRequests] = useState([]);
+<<<<<<< HEAD
   const [receiptRequests, setReceiptRequests] = useState([]);
   const [nearbyDonations, setNearbyDonations] = useState([]);
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('browse');
   const [categoryFilter, setCategoryFilter] = useState('');
   const [requesting, setRequesting] = useState(null);
+<<<<<<< HEAD
   const [userLocation, setUserLocation] = useState(null);
   const [trackingDonationId, setTrackingDonationId] = useState(null);
 
@@ -70,6 +80,21 @@ const ReceiverDashboard = () => {
       setAvailable(availRes.data);
       setMyRequests(reqRes.data);
       setReceiptRequests(receiptsRes.data);
+=======
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const [availRes, reqRes] = await Promise.all([
+        API.get('/donations/available'),
+        API.get('/donations/my-requests'),
+      ]);
+      setAvailable(availRes.data);
+      setMyRequests(reqRes.data);
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
     } catch (err) {
       toast.error('Failed to load data');
     } finally {
@@ -81,7 +106,11 @@ const ReceiverDashboard = () => {
     setRequesting(id);
     try {
       await API.put(`/donations/${id}/request`);
+<<<<<<< HEAD
       toast.success('Donation requested! 🧾 Blockchain record created.');
+=======
+      toast.success('Donation requested successfully!');
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
       fetchData();
     } catch (err) {
       toast.error(err.response?.data?.message || 'Failed to request donation');
@@ -90,6 +119,7 @@ const ReceiverDashboard = () => {
     }
   };
 
+<<<<<<< HEAD
   // Sort available donations: expiring soon first
   const sortedAvailable = [...available].sort((a, b) => {
     return new Date(a.expiryDate) - new Date(b.expiryDate);
@@ -104,6 +134,11 @@ const ReceiverDashboard = () => {
     const hoursLeft = (new Date(d.expiryDate) - Date.now()) / (1000 * 60 * 60);
     return hoursLeft > 0 && hoursLeft <= 24;
   });
+=======
+  const filteredAvailable = categoryFilter
+    ? available.filter(d => d.category === categoryFilter)
+    : available;
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
 
   const stats = {
     available: available.length,
@@ -127,6 +162,7 @@ const ReceiverDashboard = () => {
           <StatsCard icon={<FiCheckCircle />} label="Received" value={stats.delivered} color="purple" />
         </div>
 
+<<<<<<< HEAD
         <div className="section-toggle" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div style={{ display: 'flex' }}>
             <button className={`section-toggle-btn ${activeTab === 'browse' ? 'active' : ''}`} onClick={() => setActiveTab('browse')}>
@@ -169,10 +205,20 @@ const ReceiverDashboard = () => {
               )}
             </div>
           )}
+=======
+        <div className="section-toggle">
+          <button className={`section-toggle-btn ${activeTab === 'browse' ? 'active' : ''}`} onClick={() => setActiveTab('browse')}>
+            <FiSearch /> Browse Donations
+          </button>
+          <button className={`section-toggle-btn ${activeTab === 'requests' ? 'active' : ''}`} onClick={() => setActiveTab('requests')}>
+            <FiPackage /> My Requests
+          </button>
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
         </div>
 
         {activeTab === 'browse' && (
           <div className="dashboard-section">
+<<<<<<< HEAD
             {/* Expiring Soon Alert */}
             {expiringSoon.length > 0 && (
               <div style={{
@@ -209,6 +255,8 @@ const ReceiverDashboard = () => {
               </div>
             )}
 
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
             <div className="filter-bar">
               <select className="form-control" style={{ maxWidth: '200px' }} value={categoryFilter} onChange={(e) => setCategoryFilter(e.target.value)}>
                 <option value="">All Categories</option>
@@ -233,7 +281,10 @@ const ReceiverDashboard = () => {
                     key={donation._id}
                     donation={donation}
                     showDonor={true}
+<<<<<<< HEAD
                     receiptStatus={receiptRequests.find(r => r.donation?._id === donation._id || r.donation === donation._id)?.status}
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
                     actions={
                       <button
                         className="btn btn-primary btn-sm"
@@ -256,6 +307,7 @@ const ReceiverDashboard = () => {
           </div>
         )}
 
+<<<<<<< HEAD
         {activeTab === 'map' && (
           <div className="dashboard-section">
             <div style={{ marginBottom: 'var(--space-md)' }}>
@@ -296,6 +348,8 @@ const ReceiverDashboard = () => {
           </div>
         )}
 
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
         {activeTab === 'requests' && (
           <div className="dashboard-section">
             {loading ? (
@@ -307,6 +361,7 @@ const ReceiverDashboard = () => {
                     key={donation._id}
                     donation={donation}
                     showDonor={true}
+<<<<<<< HEAD
                     receiptStatus={receiptRequests.find(r => r.donation?._id === donation._id || r.donation === donation._id)?.status}
                     footer={
                       <>
@@ -333,6 +388,8 @@ const ReceiverDashboard = () => {
                         ) : null}
                       </>
                     }
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
                   />
                 ))}
               </div>
@@ -348,6 +405,7 @@ const ReceiverDashboard = () => {
             )}
           </div>
         )}
+<<<<<<< HEAD
 
         {/* Live Tracking Modal (Receiver) */}
         {trackingDonationId && (
@@ -356,6 +414,8 @@ const ReceiverDashboard = () => {
             onClose={() => setTrackingDonationId(null)}
           />
         )}
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
       </div>
     </div>
   );

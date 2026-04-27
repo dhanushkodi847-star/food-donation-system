@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+<<<<<<< HEAD
 import { useTheme } from '../context/ThemeContext';
 import { FiLogOut, FiUser, FiMenu, FiX, FiSun, FiMoon } from 'react-icons/fi';
 import { MdFoodBank } from 'react-icons/md';
@@ -10,6 +11,15 @@ import './Navbar.css';
 const Navbar = () => {
   const { user, token, isAuthenticated, logout } = useAuth();
   const { theme, toggleTheme } = useTheme();
+=======
+import { FiLogOut, FiUser, FiMenu, FiX } from 'react-icons/fi';
+import { MdFoodBank } from 'react-icons/md';
+import { useState } from 'react';
+import './Navbar.css';
+
+const Navbar = () => {
+  const { user, isAuthenticated, logout } = useAuth();
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -32,6 +42,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-container">
+<<<<<<< HEAD
         <div className="navbar-left-group">
           <Link to={isAuthenticated ? getDashboardLink() : '/'} className="navbar-brand">
             <MdFoodBank className="navbar-logo-icon" />
@@ -50,6 +61,12 @@ const Navbar = () => {
             {theme === 'dark' ? <FiSun /> : <FiMoon />}
           </button>
         </div>
+=======
+        <Link to={isAuthenticated ? getDashboardLink() : '/'} className="navbar-brand">
+          <MdFoodBank className="navbar-logo-icon" />
+          <span className="navbar-logo-text">FoodShare</span>
+        </Link>
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
 
         <button className="navbar-toggle" onClick={() => setMenuOpen(!menuOpen)}>
           {menuOpen ? <FiX /> : <FiMenu />}
@@ -61,11 +78,14 @@ const Navbar = () => {
               <Link to={getDashboardLink()} className="navbar-link" onClick={() => setMenuOpen(false)}>
                 Dashboard
               </Link>
+<<<<<<< HEAD
               {user?.role === 'admin' && (
                 <Link to="/admin/predictions" className="navbar-link" onClick={() => setMenuOpen(false)}>
                   🤖 AI Predictions
                 </Link>
               )}
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
               <Link to="/profile" className="navbar-link" onClick={() => setMenuOpen(false)}>
                 <FiUser /> Profile
               </Link>

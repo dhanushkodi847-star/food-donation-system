@@ -63,6 +63,7 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+<<<<<<< HEAD
   const googleLogin = async (token, role) => {
     const { data } = await API.post('/auth/google', { token, role });
     setUser(data);
@@ -72,6 +73,8 @@ export const AuthProvider = ({ children }) => {
     return data;
   };
 
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
   return (
     <AuthContext.Provider
       value={{
@@ -81,7 +84,10 @@ export const AuthProvider = ({ children }) => {
         login,
         registerDonor,
         registerReceiver,
+<<<<<<< HEAD
         googleLogin,
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
         logout,
         updateUser,
         isAuthenticated: !!token,

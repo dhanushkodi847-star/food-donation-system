@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import API from '../api/axios';
 import StatsCard from '../components/StatsCard';
 import DonationCard from '../components/DonationCard';
+<<<<<<< HEAD
 import AdminAnalytics from '../components/AdminAnalytics';
 import LiveTrackingMap from '../components/LiveTrackingMap';
 import { FiUsers, FiPackage, FiCheckCircle, FiTruck, FiTrash2, FiShoppingBag, FiHeart, FiTrendingUp, FiFileText, FiDownload, FiCheck, FiX, FiMapPin } from 'react-icons/fi';
@@ -9,15 +10,24 @@ import { MdVolunteerActivism } from 'react-icons/md';
 import { toast } from 'react-toastify';
 import './Dashboard.css';
 import { downloadPDF } from '../utils/downloadHelper';
+=======
+import { FiUsers, FiPackage, FiCheckCircle, FiTruck, FiTrash2, FiShoppingBag, FiHeart } from 'react-icons/fi';
+import { MdVolunteerActivism } from 'react-icons/md';
+import { toast } from 'react-toastify';
+import './Dashboard.css';
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
 
 const AdminDashboard = () => {
   const [stats, setStats] = useState(null);
   const [users, setUsers] = useState([]);
   const [donations, setDonations] = useState([]);
+<<<<<<< HEAD
   const [expiredDonations, setExpiredDonations] = useState([]);
   const [receiptRequests, setReceiptRequests] = useState([]);
   const [activeDeliveries, setActiveDeliveries] = useState([]);
   const [trackingDonationId, setTrackingDonationId] = useState(null);
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('overview');
 
@@ -27,6 +37,7 @@ const AdminDashboard = () => {
 
   const fetchData = async () => {
     try {
+<<<<<<< HEAD
       const [statsRes, usersRes, donationsRes, expiredRes, requestsRes, activeRes] = await Promise.all([
         API.get('/admin/stats'),
         API.get('/admin/users'),
@@ -34,13 +45,22 @@ const AdminDashboard = () => {
         API.get('/donations/expired'),
         API.get('/receipts/requests?status=pending'),
         API.get('/tracking/active/all').catch(() => ({ data: [] })),
+=======
+      const [statsRes, usersRes, donationsRes] = await Promise.all([
+        API.get('/admin/stats'),
+        API.get('/admin/users'),
+        API.get('/admin/donations'),
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
       ]);
       setStats(statsRes.data);
       setUsers(usersRes.data);
       setDonations(donationsRes.data);
+<<<<<<< HEAD
       setExpiredDonations(expiredRes.data);
       setReceiptRequests(requestsRes.data);
       setActiveDeliveries(activeRes.data);
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
     } catch (err) {
       toast.error('Failed to load admin data');
     } finally {
@@ -70,6 +90,7 @@ const AdminDashboard = () => {
     }
   };
 
+<<<<<<< HEAD
   const handleDeleteAllExpired = async () => {
     if (!window.confirm(`Are you sure you want to delete ALL ${expiredDonations.length} expired donations?`)) return;
     try {
@@ -91,6 +112,8 @@ const AdminDashboard = () => {
     }
   };
 
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
   if (loading) {
     return <div className="dashboard"><div className="container"><div className="spinner"></div></div></div>;
   }
@@ -100,6 +123,7 @@ const AdminDashboard = () => {
       <div className="container">
         <div className="dashboard-header">
           <h1>Admin Dashboard 🛡️</h1>
+<<<<<<< HEAD
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
             <p>Manage users, donations, and monitor platform activity.</p>
             <button 
@@ -110,6 +134,9 @@ const AdminDashboard = () => {
               <FiDownload /> Export Full Report (PDF)
             </button>
           </div>
+=======
+          <p>Manage users, donations, and monitor platform activity.</p>
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
         </div>
 
         <div className="dashboard-stats stagger-children">
@@ -122,21 +149,30 @@ const AdminDashboard = () => {
         <div className="dashboard-stats stagger-children">
           <StatsCard icon={<FiShoppingBag />} label="Available" value={stats?.availableDonations || 0} color="primary" />
           <StatsCard icon={<FiTruck />} label="Requested" value={stats?.requestedDonations || 0} color="accent" />
+<<<<<<< HEAD
           <StatsCard icon={<FiCheckCircle />} label="Delivered" value={stats?.deliveredDonations || 0} color="info" />
           <StatsCard icon={<FiTrash2 />} label="Expired" value={stats?.expiredDonations || 0} color="danger" />
+=======
+          <StatsCard icon={<FiCheckCircle />} label="Accepted" value={stats?.acceptedDonations || 0} color="info" />
+          <StatsCard icon={<FiCheckCircle />} label="Delivered" value={stats?.deliveredDonations || 0} color="purple" />
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
         </div>
 
         <div className="section-toggle">
           <button className={`section-toggle-btn ${activeTab === 'overview' ? 'active' : ''}`} onClick={() => setActiveTab('overview')}>
             📊 Overview
           </button>
+<<<<<<< HEAD
           <button className={`section-toggle-btn ${activeTab === 'analytics' ? 'active' : ''}`} onClick={() => setActiveTab('analytics')}>
             <FiTrendingUp /> Analytics
           </button>
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
           <button className={`section-toggle-btn ${activeTab === 'users' ? 'active' : ''}`} onClick={() => setActiveTab('users')}>
             <FiUsers /> Users ({users.length})
           </button>
           <button className={`section-toggle-btn ${activeTab === 'donations' ? 'active' : ''}`} onClick={() => setActiveTab('donations')}>
+<<<<<<< HEAD
             <FiPackage /> Active ({donations.filter(d => d.status !== 'expired').length})
           </button>
           <button className={`section-toggle-btn ${activeTab === 'expired' ? 'active' : ''}`} onClick={() => setActiveTab('expired')}>
@@ -147,6 +183,9 @@ const AdminDashboard = () => {
           </button>
           <button className={`section-toggle-btn ${activeTab === 'receipts' ? 'active' : ''}`} onClick={() => setActiveTab('receipts')}>
             <FiFileText /> Receipts ({receiptRequests.length})
+=======
+            <FiPackage /> Donations ({donations.length})
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
           </button>
         </div>
 
@@ -206,12 +245,15 @@ const AdminDashboard = () => {
           </div>
         )}
 
+<<<<<<< HEAD
         {activeTab === 'analytics' && (
           <div className="dashboard-section fade-in">
             <AdminAnalytics />
           </div>
         )}
 
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
         {activeTab === 'users' && (
           <div className="dashboard-section">
             <div className="table-container admin-users-table">
@@ -251,9 +293,15 @@ const AdminDashboard = () => {
 
         {activeTab === 'donations' && (
           <div className="dashboard-section">
+<<<<<<< HEAD
             {donations.filter(d => d.status !== 'expired').length > 0 ? (
               <div className="donations-grid stagger-children">
                 {donations.filter(d => d.status !== 'expired').map((donation) => (
+=======
+            {donations.length > 0 ? (
+              <div className="donations-grid stagger-children">
+                {donations.map((donation) => (
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
                   <DonationCard
                     key={donation._id}
                     donation={donation}
@@ -270,12 +318,18 @@ const AdminDashboard = () => {
             ) : (
               <div className="empty-state">
                 <div className="empty-state-icon">📦</div>
+<<<<<<< HEAD
                 <h3>No Active Donations</h3>
                 <p>There are no active donations at the moment.</p>
+=======
+                <h3>No Donations</h3>
+                <p>No donations have been created yet.</p>
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
               </div>
             )}
           </div>
         )}
+<<<<<<< HEAD
 
         {activeTab === 'expired' && (
           <div className="dashboard-section">
@@ -456,6 +510,8 @@ const AdminDashboard = () => {
             onClose={() => setTrackingDonationId(null)}
           />
         )}
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
       </div>
     </div>
   );

@@ -1,10 +1,15 @@
 const jwt = require('jsonwebtoken');
 const { validationResult } = require('express-validator');
+<<<<<<< HEAD
 const { OAuth2Client } = require('google-auth-library');
 const User = require('../models/User');
 
 const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
+=======
+const User = require('../models/User');
+
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
 // Generate JWT
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '30d' });
@@ -34,7 +39,10 @@ const registerDonor = async (req, res, next) => {
       phone,
       address,
       role: 'donor',
+<<<<<<< HEAD
       isVerified: true,
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
     });
 
     res.status(201).json({
@@ -74,7 +82,10 @@ const registerReceiver = async (req, res, next) => {
       address,
       role: 'receiver',
       organization: organization || '',
+<<<<<<< HEAD
       isVerified: true,
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
     });
 
     res.status(201).json({
@@ -173,6 +184,7 @@ const updateProfile = async (req, res) => {
   }
 };
 
+<<<<<<< HEAD
 // @desc    Google OAuth Login/Register
 // @route   POST /api/auth/google
 // @access  Public
@@ -224,3 +236,6 @@ const googleLogin = async (req, res) => {
 };
 
 module.exports = { registerDonor, registerReceiver, login, getProfile, updateProfile, googleLogin };
+=======
+module.exports = { registerDonor, registerReceiver, login, getProfile, updateProfile };
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda

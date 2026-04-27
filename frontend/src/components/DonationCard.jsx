@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { FiClock, FiMapPin, FiPackage, FiCalendar, FiDownload, FiFileText, FiInfo, FiChevronDown, FiChevronUp } from 'react-icons/fi';
@@ -14,14 +15,24 @@ const DonationCard = ({ donation, actions, showDonor, showReceiver, footer, rece
   const [showTrail, setShowTrail] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
 
+=======
+import { FiClock, FiMapPin, FiPackage, FiCalendar } from 'react-icons/fi';
+import './DonationCard.css';
+
+const DonationCard = ({ donation, actions, showDonor, showReceiver }) => {
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
   const statusLabels = {
     available: 'Available',
     requested: 'Requested',
     accepted: 'Accepted',
     picked_up: 'Picked Up',
+<<<<<<< HEAD
     reached: 'Reached',
     delivered: 'Delivered',
     expired: 'Expired',
+=======
+    delivered: 'Delivered',
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
   };
 
   const categoryIcons = {
@@ -34,25 +45,37 @@ const DonationCard = ({ donation, actions, showDonor, showReceiver, footer, rece
   };
 
   const formatDate = (date) => {
+<<<<<<< HEAD
     return new Date(date).toLocaleString('en-IN', {
       day: 'numeric',
       month: 'short',
       year: 'numeric',
       hour: '2-digit',
       minute: '2-digit',
+=======
+    return new Date(date).toLocaleDateString('en-IN', {
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric',
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
     });
   };
 
   return (
+<<<<<<< HEAD
     <div 
       className={`donation-card animate-fade-in ${donation.status === 'expired' ? 'expired-card' : ''}`}
       style={donation.status === 'expired' ? { filter: 'grayscale(0.4)', opacity: 0.85 } : {}}
     >
+=======
+    <div className="donation-card animate-fade-in">
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
       <div className="donation-card-header">
         <div className="donation-card-category">
           <span className="category-emoji">{categoryIcons[donation.category] || '🍽️'}</span>
           <span className="category-name">{donation.category}</span>
         </div>
+<<<<<<< HEAD
         <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
           {donation.qualityScore?.label && (
             <span
@@ -96,12 +119,20 @@ const DonationCard = ({ donation, actions, showDonor, showReceiver, footer, rece
         </div>
       )}
 
+=======
+        <span className={`badge badge-${donation.status}`}>
+          {statusLabels[donation.status]}
+        </span>
+      </div>
+
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
       <h3 className="donation-card-title">{donation.foodName}</h3>
       
       {donation.description && (
         <p className="donation-card-desc">{donation.description}</p>
       )}
 
+<<<<<<< HEAD
       {/* Expiry Tracker */}
       {donation.expiryDate && ['available', 'expired'].includes(donation.status) && (
         <div style={{ margin: '8px 0' }}>
@@ -109,6 +140,8 @@ const DonationCard = ({ donation, actions, showDonor, showReceiver, footer, rece
         </div>
       )}
 
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
       <div className="donation-card-details">
         <div className="donation-detail">
           <FiPackage />
@@ -126,6 +159,7 @@ const DonationCard = ({ donation, actions, showDonor, showReceiver, footer, rece
           <FiClock />
           <span>Pickup: {donation.pickupTime}</span>
         </div>
+<<<<<<< HEAD
         {donation.distance != null && (
           <div className="donation-detail">
             <FiMapPin />
@@ -207,6 +241,10 @@ const DonationCard = ({ donation, actions, showDonor, showReceiver, footer, rece
         </div>
       )}
 
+=======
+      </div>
+
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
       {showDonor && donation.donor && (
         <div className="donation-card-user">
           <span className="user-label">Donor:</span>
@@ -225,6 +263,7 @@ const DonationCard = ({ donation, actions, showDonor, showReceiver, footer, rece
         </div>
       )}
 
+<<<<<<< HEAD
       <div className="donation-card-actions">
         {actions}
         {donation.status === 'delivered' && !receiptStatus && (
@@ -273,6 +312,11 @@ const DonationCard = ({ donation, actions, showDonor, showReceiver, footer, rece
       {footer && (
         <div className="donation-card-footer" style={{ marginTop: '12px', paddingTop: '12px', borderTop: '1px solid var(--border-color)' }}>
           {footer}
+=======
+      {actions && (
+        <div className="donation-card-actions">
+          {actions}
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
         </div>
       )}
     </div>

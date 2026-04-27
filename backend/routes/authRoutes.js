@@ -6,11 +6,17 @@ const {
   login,
   getProfile,
   updateProfile,
+<<<<<<< HEAD
   googleLogin,
 } = require('../controllers/authController');
 const { protect } = require('../middleware/auth');
 
 
+=======
+} = require('../controllers/authController');
+const { protect } = require('../middleware/auth');
+
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
 const router = express.Router();
 
 // Validation rules
@@ -32,7 +38,10 @@ router.post(
   registerReceiver
 );
 router.post('/login', login);
+<<<<<<< HEAD
 router.post('/google', googleLogin);
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
 router.get('/profile', protect, getProfile);
 router.put('/profile', protect, updateProfile);
 

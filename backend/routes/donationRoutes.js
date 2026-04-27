@@ -9,13 +9,19 @@ const {
   updateDonationStatus,
   deleteDonation,
   getDonationById,
+<<<<<<< HEAD
   getExpiredDonations,
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
 } = require('../controllers/donationController');
 const { protect, authorize } = require('../middleware/auth');
 
 const router = express.Router();
 
+<<<<<<< HEAD
 router.get('/expired', protect, authorize('admin'), getExpiredDonations);
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
 router.post('/', protect, authorize('donor'), createDonation);
 router.get('/', protect, getDonations);
 router.get('/my-donations', protect, authorize('donor'), getMyDonations);

@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+<<<<<<< HEAD
 import { GoogleLogin } from '@react-oauth/google';
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
 import { FiLogIn, FiMail, FiLock } from 'react-icons/fi';
 import { toast } from 'react-toastify';
 import './Auth.css';
@@ -10,7 +13,11 @@ const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+<<<<<<< HEAD
   const { login, googleLogin } = useAuth();
+=======
+  const { login } = useAuth();
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -39,6 +46,7 @@ const Login = () => {
     }
   };
 
+<<<<<<< HEAD
   const handleGoogleSuccess = async (credentialResponse) => {
     try {
       setLoading(true);
@@ -57,6 +65,8 @@ const Login = () => {
     }
   };
 
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
   return (
     <div className="auth-page">
       <div className="auth-card">
@@ -98,6 +108,7 @@ const Login = () => {
           <button type="submit" className="btn btn-primary auth-submit" disabled={loading}>
             {loading ? 'Signing in...' : 'Sign In'}
           </button>
+<<<<<<< HEAD
 
           <div style={{ textAlign: 'center', margin: '16px 0', color: 'var(--text-muted)' }}>— OR —</div>
           
@@ -110,6 +121,8 @@ const Login = () => {
               shape="pill"
             />
           </div>
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
         </form>
 
         <div className="auth-footer">

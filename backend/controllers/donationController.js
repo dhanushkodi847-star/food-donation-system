@@ -1,8 +1,11 @@
 const Donation = require('../models/Donation');
+<<<<<<< HEAD
 const User = require('../models/User');
 const Notification = require('../models/Notification');
 const { haversineDistance } = require('../utils/geoUtils');
 const { addBlock } = require('./blockchainController');
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
 
 // @desc    Create a new donation
 // @route   POST /api/donations
@@ -18,9 +21,12 @@ const createDonation = async (req, res) => {
       pickupAddress,
       pickupTime,
       description,
+<<<<<<< HEAD
       coordinates,
       foodImage,
       qualityScore,
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
     } = req.body;
 
     const donation = await Donation.create({
@@ -33,6 +39,7 @@ const createDonation = async (req, res) => {
       pickupAddress: pickupAddress || req.user.address,
       pickupTime,
       description,
+<<<<<<< HEAD
       coordinates: coordinates || {},
       foodImage: foodImage || '',
       qualityScore: qualityScore || {},
@@ -82,6 +89,11 @@ const createDonation = async (req, res) => {
       }
     }
 
+=======
+    });
+
+    const populatedDonation = await donation.populate('donor', 'name email phone address');
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
     res.status(201).json(populatedDonation);
   } catch (error) {
     res.status(500).json({ message: 'Server error', error: error.message });
@@ -129,7 +141,11 @@ const getMyDonations = async (req, res) => {
 // @access  Private (Receiver only)
 const getAvailableDonations = async (req, res) => {
   try {
+<<<<<<< HEAD
     const donations = await Donation.find({ status: 'available', expiryDate: { $gt: new Date() } })
+=======
+    const donations = await Donation.find({ status: 'available' })
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
       .populate('donor', 'name email phone address')
       .sort({ createdAt: -1 });
 
@@ -166,15 +182,20 @@ const requestDonation = async (req, res) => {
     }
 
     if (donation.status !== 'available') {
+<<<<<<< HEAD
       return res.status(400).json({ 
         message: donation.status === 'expired' ? 'This donation has expired' : 'This donation is no longer available' 
       });
+=======
+      return res.status(400).json({ message: 'This donation is no longer available' });
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
     }
 
     donation.status = 'requested';
     donation.receiver = req.user._id;
     await donation.save();
 
+<<<<<<< HEAD
     // 🧾 Blockchain: Record request
     await addBlock(donation._id, 'requested', req.user._id, {
       receiverId: req.user._id.toString(),
@@ -190,6 +211,8 @@ const requestDonation = async (req, res) => {
       relatedDonation: donation._id,
     });
 
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
     const updated = await donation.populate([
       { path: 'donor', select: 'name email phone address' },
       { path: 'receiver', select: 'name email phone organization' },
@@ -206,7 +229,11 @@ const requestDonation = async (req, res) => {
 // @access  Private (Donor/Admin)
 const updateDonationStatus = async (req, res) => {
   try {
+<<<<<<< HEAD
     const { status, otp } = req.body;
+=======
+    const { status } = req.body;
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
     const donation = await Donation.findById(req.params.id);
 
     if (!donation) {
@@ -221,16 +248,23 @@ const updateDonationStatus = async (req, res) => {
       return res.status(403).json({ message: 'Not authorized to update this donation' });
     }
 
+<<<<<<< HEAD
     if (donation.status === 'expired') {
       return res.status(400).json({ message: 'Cannot update status of an expired donation' });
     }
 
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
     // Valid status transitions
     const validTransitions = {
       requested: ['accepted', 'available'], // accept or reject
       accepted: ['picked_up'],
+<<<<<<< HEAD
       picked_up: ['reached', 'delivered'],
       reached: ['delivered'],
+=======
+      picked_up: ['delivered'],
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
     };
 
     if (
@@ -245,6 +279,7 @@ const updateDonationStatus = async (req, res) => {
     // If rejecting (going back to available), clear receiver
     if (status === 'available') {
       donation.receiver = null;
+<<<<<<< HEAD
       donation.deliveryOtp = null;
     }
 
@@ -311,6 +346,13 @@ const updateDonationStatus = async (req, res) => {
       });
     }
 
+=======
+    }
+
+    donation.status = status;
+    await donation.save();
+
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
     const updated = await donation.populate([
       { path: 'donor', select: 'name email phone address' },
       { path: 'receiver', select: 'name email phone organization' },
@@ -340,12 +382,15 @@ const deleteDonation = async (req, res) => {
       return res.status(403).json({ message: 'Not authorized to delete this donation' });
     }
 
+<<<<<<< HEAD
     // 🧾 Blockchain: Record deletion
     await addBlock(donation._id, 'deleted', req.user._id, {
       foodName: donation.foodName,
       reason: 'User deleted',
     });
 
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
     await Donation.findByIdAndDelete(req.params.id);
     res.json({ message: 'Donation removed successfully' });
   } catch (error) {
@@ -372,6 +417,7 @@ const getDonationById = async (req, res) => {
   }
 };
 
+<<<<<<< HEAD
 // @desc    Get expired donations for admin
 // @route   GET /api/donations/expired
 // @access  Private (Admin only)
@@ -387,6 +433,8 @@ const getExpiredDonations = async (req, res) => {
   }
 };
 
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
 module.exports = {
   createDonation,
   getDonations,
@@ -397,5 +445,8 @@ module.exports = {
   updateDonationStatus,
   deleteDonation,
   getDonationById,
+<<<<<<< HEAD
   getExpiredDonations,
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
 };

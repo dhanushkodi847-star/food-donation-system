@@ -1,6 +1,9 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
+<<<<<<< HEAD
 import { ThemeProvider, useTheme } from './context/ThemeContext';
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -15,7 +18,10 @@ import ReceiverRegister from './pages/ReceiverRegister';
 import DonorDashboard from './pages/DonorDashboard';
 import ReceiverDashboard from './pages/ReceiverDashboard';
 import AdminDashboard from './pages/AdminDashboard';
+<<<<<<< HEAD
 import PredictionDashboard from './pages/PredictionDashboard';
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
 import Profile from './pages/Profile';
 
 import './App.css';
@@ -36,6 +42,7 @@ const PublicRoute = ({ children }) => {
 
 function App() {
   return (
+<<<<<<< HEAD
     <ThemeProvider>
       <AuthProvider>
         <Router>
@@ -43,6 +50,14 @@ function App() {
             <Navbar />
             <main className="main-content">
               <Routes>
+=======
+    <AuthProvider>
+      <Router>
+        <div className="app">
+          <Navbar />
+          <main className="main-content">
+            <Routes>
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
               {/* Public Routes */}
               <Route path="/" element={<Landing />} />
               <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
@@ -70,6 +85,7 @@ function App() {
                 </ProtectedRoute>
               } />
 
+<<<<<<< HEAD
               {/* AI Predictions - Admin */}
               <Route path="/admin/predictions" element={
                 <ProtectedRoute roles={['admin']}>
@@ -77,6 +93,8 @@ function App() {
                 </ProtectedRoute>
               } />
 
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
               {/* Profile - Any authenticated user */}
               <Route path="/profile" element={
                 <ProtectedRoute roles={['donor', 'receiver', 'admin']}>
@@ -87,6 +105,7 @@ function App() {
               {/* Catch-all redirect */}
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
+<<<<<<< HEAD
             </main>
             <Footer />
           </div>
@@ -106,6 +125,26 @@ function App() {
         </Router>
       </AuthProvider>
     </ThemeProvider>
+=======
+          </main>
+          <Footer />
+        </div>
+
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+        />
+      </Router>
+    </AuthProvider>
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
   );
 }
 

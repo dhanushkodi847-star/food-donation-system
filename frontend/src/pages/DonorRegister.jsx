@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+<<<<<<< HEAD
 import { GoogleLogin } from '@react-oauth/google';
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
 import { FiUser, FiMail, FiLock, FiPhone, FiMapPin } from 'react-icons/fi';
 import { MdVolunteerActivism } from 'react-icons/md';
 import { toast } from 'react-toastify';
@@ -13,7 +16,11 @@ const DonorRegister = () => {
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+<<<<<<< HEAD
   const { registerDonor, googleLogin } = useAuth();
+=======
+  const { registerDonor } = useAuth();
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -47,6 +54,7 @@ const DonorRegister = () => {
     }
   };
 
+<<<<<<< HEAD
   const handleGoogleSuccess = async (credentialResponse) => {
     try {
       setLoading(true);
@@ -60,6 +68,8 @@ const DonorRegister = () => {
     }
   };
 
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
   return (
     <div className="auth-page">
       <div className="auth-card">
@@ -106,6 +116,7 @@ const DonorRegister = () => {
           <button type="submit" className="btn btn-primary auth-submit" disabled={loading}>
             {loading ? 'Creating Account...' : 'Create Donor Account'}
           </button>
+<<<<<<< HEAD
 
           <div style={{ textAlign: 'center', margin: '16px 0', color: 'var(--text-muted)' }}>— OR —</div>
           
@@ -119,6 +130,8 @@ const DonorRegister = () => {
               shape="pill"
             />
           </div>
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
         </form>
 
         <div className="auth-footer">

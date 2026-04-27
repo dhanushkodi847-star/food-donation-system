@@ -89,6 +89,7 @@
   --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
+<<<<<<< HEAD
 /* ========== Light Mode Variables ========== */
 [data-theme="light"] {
   /* Surfaces */
@@ -166,6 +167,8 @@
   border-color: #cbd5e1;
 }
 
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
 /* ========== Reset & Base ========== */
 *,
 *::before,
@@ -430,11 +433,14 @@ textarea.form-control {
   color: #c084fc;
   border: 1px solid rgba(168, 85, 247, 0.3);
 }
+<<<<<<< HEAD
 .badge-reached {
   background: rgba(236, 72, 153, 0.15);
   color: #f472b6;
   border: 1px solid rgba(236, 72, 153, 0.3);
 }
+=======
+>>>>>>> 57fc707ed19b2d85e716b828c579053818e2fcda
 .badge-delivered {
   background: rgba(34, 197, 94, 0.15);
   color: #4ade80;
